@@ -1,0 +1,341 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: Akzidenz;
+    font-weight: 700;
+    font-style: normal;
+    src: url("/fonts/akzidenz/AkzidenzGroteskPro-BoldEx.otf") format("opentype");
+  }
+  @font-face {
+    font-family: Akzidenz;
+    font-weight: 500;
+    font-style: normal;
+    src: url("/fonts/akzidenz/AkzidenzGroteskPro-Md.otf") format("opentype");
+  }
+  @font-face {
+    font-family: Akzidenz;
+    font-weight: 400;
+    font-style: normal;
+    src: url("/fonts/akzidenz/AkzidenzGroteskPro-Regular.otf")
+      format("opentype");
+  }
+
+  html {
+    font-family: Akzidenz, sistem-ui, sans-serif;
+  }
+}
+
+@layer components {
+  #app {
+    @apply h-screen flex flex-col justify-center items-center dark:text-white dark:bg-gradient-to-br from-gray-800 to-zinc-700;
+  }
+
+  .logo {
+    @apply text-4xl sm:text-4xl md:text-4xl font-bold;
+  }
+
+  .logo-sm {
+    @apply text-xl sm:text-4xl;
+  }
+
+  .button-primary {
+    @apply flex justify-center rounded-md bg-slate-400 dark:bg-gray-500 enabled:dark:hover:bg-gray-400 enabled:hover:bg-slate-300 font-medium px-5 py-2 disabled:opacity-20 disabled:cursor-not-allowed;
+    background-image: linear-gradient(to right, #4a5568, #98a5bd8a);
+    color: white; /* Цвет текста */
+    font-size: 16px; /* Размер шрифта */
+    font-weight: bold; /* Толщина шрифта */
+    position: relative; /* Позиционирование для псевдоэлементов */
+    overflow: hidden; /* Скрытие лишнего содержимого */
+    border: 2px solid transparent; /* Начальная прозрачная граница */
+    transition: all 0.3s; /* Плавные изменения */
+  }
+
+  .button-primary::before,
+  .button-primary::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    transition: all 0.4s ease-out;
+    z-index: -1;
+  }
+
+  .button-primary::before {
+    top: 120%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .button-primary::after {
+    bottom: 120%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .button-primary:hover {
+    color: #4a5568;
+    background-color: white;
+    border-color: #9399a5;
+  }
+
+  .button-primary:hover::before,
+  .button-primary:hover::after {
+    top: 50%;
+    bottom: 50%;
+    transform: translate(-50%, -50%) scale(1.5);
+    opacity: 0;
+  }
+
+  .button-primary:active {
+    transform: translateY(2px);
+  }
+
+  .button-secondary {
+    @apply border border-black rounded-md hover:bg-slate-100 dark:border-white dark:hover:bg-zinc-600;
+    background-image: linear-gradient(to right, #31363f, #646870c2);
+  }
+
+  .button-secondary {
+    @apply border border-black rounded-md hover:bg-slate-100 dark:border-white dark:hover:bg-zinc-600;
+    background-image: linear-gradient(to right, #31363f, #646870c2);
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid transparent;
+    transition: all 0.3s;
+  }
+
+  .button-secondary::before,
+  .button-secondary::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    transition: all 0.4s ease-out;
+    z-index: -1;
+  }
+
+  .button-secondary::before {
+    top: 120%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .button-secondary::after {
+    bottom: 120%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .button-secondary:hover {
+    color: #31363f;
+    background-color: white;
+    border-color: #31363f;
+  }
+
+  .button-secondary:hover::before,
+  .button-secondary:hover::after {
+    top: 50%;
+    bottom: 50%;
+    transform: translate(-50%, -50%) scale(1.5);
+    opacity: 0;
+  }
+
+  .button-secondary:active {
+    transform: translateY(2px);
+  }
+
+  .button-easy img {
+    width: 65px;
+    height: 65px;
+  }
+
+  .button-medium img {
+    width: 65px;
+    height: 65px;
+  }
+
+  .button-hard img {
+    width: 65px;
+    height: 65px;
+  }
+
+  .button-easy {
+    @apply border border-black rounded-md hover:bg-slate-100 dark:border-white dark:hover:bg-zinc-600;
+    background-image: linear-gradient(to right, #18f72a, #17ca769d);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    gap: 5px;
+    width: 120px;
+    height: 120px;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+  }
+
+  .button-medium {
+    @apply border border-black rounded-md hover:bg-slate-100 dark:border-white dark:hover:bg-zinc-600;
+    background-image: linear-gradient(to right, #e7da1b, #9ac91bc2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    gap: 5px;
+    width: 120px;
+    height: 120px;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+  }
+
+  .button-hard {
+    @apply border border-black rounded-md hover:bg-slate-100 dark:border-white dark:hover:bg-zinc-600;
+    background-image: linear-gradient(to right, #e42821, #e97618c2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    gap: 5px;
+    width: 120px;
+    height: 120px;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+  }
+
+  .button-easy {
+    --glow-color: rgb(71, 168, 75);
+    --glow-spread-color: rgba(191, 123, 255, 0.4);
+    --btn-color: rgb(0, 128, 0);
+  }
+
+  .button-medium {
+    --glow-color: rgb(255, 235, 59);
+    --glow-spread-color: rgba(248, 187, 208, 0.4);
+    --btn-color: rgb(255, 193, 7);
+  }
+
+  .button-hard {
+    --glow-color: rgb(239, 83, 80);
+    --glow-spread-color: rgba(219, 68, 55, 0.4);
+    --btn-color: rgb(183, 28, 28);
+  }
+
+  .button-easy,
+  .button-medium,
+  .button-hard {
+    border: 2px solid var(--glow-color);
+    padding: 12px 24px;
+    color: var(--glow-color);
+    font-size: 19px;
+    font-weight: bold;
+    background-color: var(--btn-color);
+    border-radius: 15px;
+    outline: none;
+    box-shadow: 0 0 6px 2px var(--glow-color),
+      0 0 14px 4px var(--glow-spread-color);
+    text-shadow: 0 0 3px var(--glow-color);
+    transition: all 0.3s;
+  }
+
+  .button-easy:hover,
+  .button-medium:hover,
+  .button-hard:hover {
+    color: var(--btn-color);
+    background-color: var(--glow-color);
+    box-shadow: 0 0 4px 2px var(--glow-color),
+      0 0 10px 3px var(--glow-spread-color);
+  }
+
+  .button-easy:active,
+  .button-medium:active,
+  .button-hard:active {
+    box-shadow: 0 0 2px 1px var(--glow-color),
+      0 0 6px 3px var(--glow-spread-color);
+  }
+
+  .buttons-container {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+  }
+
+  .button-easy,
+  .button-medium,
+  .button-hard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    gap: 5px;
+    width: 120px;
+    height: 120px;
+    font-family: Arial, sans-serif;
+    text-align: center;
+  }
+
+  .placeholders-wrapper {
+    @apply flex flex-row;
+  }
+
+  .letter {
+    @apply mx-3 text-4xl font-medium;
+  }
+
+  .keyboard {
+    @apply max-w-2xl mt-5 flex justify-center flex-wrap rounded-md;
+  }
+
+  .keyboard-button {
+    @apply w-10 h-10 sm:w-14 sm:h-12 m-1 sm:m-2 rounded-md;
+  }
+
+  .hangman-img {
+    @apply w-32 h-32 sm:w-60 sm:h-60;
+  }
+
+  .result-header {
+    @apply text-2xl font-bold mt-4;
+  }
+
+  .result-header.win {
+    @apply text-lime-600;
+  }
+
+  .result-header.lose {
+    @apply text-red-600;
+  }
+
+  .result-word {
+    @apply font-medium uppercase;
+  }
+}
+
+.label-container {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  position: fixed; /* Фиксированное позиционирование */
+  top: 0; /* Расположить вверху */
+  right: 0; /* Расположить справа */
+  margin: 20px; /* Отступ от краев */
+  padding: 10px; /* Внутренние отступы */
+}
